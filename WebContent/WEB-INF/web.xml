@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns="http://java.sun.com/xml/ns/javaee" 
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>springmvc02</display-name>
+	<!-- 前端配置器 -->
+	<servlet>
+		<servlet-name>springmvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	
+	<init-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classPath:spring-mvc.xml</param-value>
+	</init-param>
+	
+	<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>springmvc</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	<filter>
+		<filter-name>encodingfilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+	<!-- 错误页面配置 -->
+	<!-- 服务器问题 -->
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error/500.jsp</location>
+	</error-page>
+	<!-- url路径不对 -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error/404.jsp</location>
+	</error-page>
+	<!-- 请求方式不匹配 -->
+	<error-page>
+		<error-code>405</error-code>
+		<location>/error/405.jsp</location>
+	</error-page>
+	<!-- 请求时，参数有问题，如果是post方式请求，服务器没有错误 -->
+	<error-page>
+		<error-code>400</error-code>
+		<location>/error/400.jsp</location>
+		
+	</error-page>
+	<filter-mapping>
+		<filter-name>encodingfilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>
