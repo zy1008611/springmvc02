@@ -7,7 +7,10 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
 	<servlet>
 		<servlet-name>springmvc</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-	
+	<!-- 默认会加载一个初始化参数 contextConfigLocation 加载默认位置的配置文件，
+		配置文件名默认：前端控制器名称-servlet.xml(springmvc-servlet.xml), 配置文件默认在：WEB-INF文件夹下 -->
+		
+  	<!-- 我们也可以自行定义初始化参数的位置和名称 -->
 	<init-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classPath:spring-mvc.xml</param-value>
@@ -49,7 +52,6 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
 	<error-page>
 		<error-code>400</error-code>
 		<location>/error/400.jsp</location>
-		
 	</error-page>
 	<filter-mapping>
 		<filter-name>encodingfilter</filter-name>

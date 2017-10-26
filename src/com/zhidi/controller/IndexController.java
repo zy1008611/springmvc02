@@ -52,7 +52,11 @@ public class IndexController {
 		mm.addAttribute("username", "我找modelmap");
 		return "request";
 	}
-	
+	/**
+	 * 用session存数据通过el表达式传入jsp界面
+	 * @param req
+	 * @return
+	 */
 	@RequestMapping("/bysession")
 	public String bySession(HttpServletRequest req){
 		HttpSession session = req.getSession();
@@ -122,5 +126,4 @@ public class IndexController {
 		System.out.println(sex);
 		return "request";
 	}
-	
 }
